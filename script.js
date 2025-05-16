@@ -1,6 +1,7 @@
 let allSeconds = 1500;
 let timerId = null;
 let isTimerWorking = false;
+let mode = "pomodoro";
 
 const timerElement = document.querySelector('#pomodoro-time');
 const startButton = document.querySelector('#start');
@@ -47,7 +48,13 @@ function switchTimer() {
 
 function resetTimer() {
     clearInterval(timerId);
-    allSeconds = 1500;
+    
+    if (mode === "pomodoro") {
+        allSeconds = 1500;
+    } else {
+        allSeconds = 300;
+    }
+    
     timerElement.textContent = formatTime(allSeconds);
     startButton.textContent = 'start';
     isTimerWorking = false;
@@ -56,11 +63,13 @@ function resetTimer() {
 function setPomodoro() {
     allSeconds = 1500;
     timerElement.textContent = formatTime(allSeconds);
+    mode = "pomodoro";
 }
 
 function setBreak() {
     allSeconds = 300;
     timerElement.textContent = formatTime(allSeconds);
+    mode = "break";
 }
 
 function switchMode(activeButton) {
