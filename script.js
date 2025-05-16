@@ -48,6 +48,8 @@ function switchTimer() {
 
 function resetTimer() {
     clearInterval(timerId);
+    startButton.textContent = 'start';
+    isTimerWorking = false;
     
     if (mode === "pomodoro") {
         allSeconds = 1500;
@@ -56,8 +58,7 @@ function resetTimer() {
     }
     
     timerElement.textContent = formatTime(allSeconds);
-    startButton.textContent = 'start';
-    isTimerWorking = false;
+    
 }
 
 function setPomodoro() {
